@@ -1,7 +1,7 @@
 //
 // This file was auto-generated using the following command:
 //
-// jai generate.jai -quiet
+// jai ./generate.jai
 //
 
 
@@ -1099,10 +1099,10 @@ any given time.
 */
 drwav_init_file :: (pWav: *drwav, filename: *u8, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 drwav_init_file_ex :: (pWav: *drwav, filename: *u8, onChunk: drwav_chunk_proc, pChunkUserData: *void, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_w :: (pWav: *drwav, filename: *wchar_t, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_ex_w :: (pWav: *drwav, filename: *wchar_t, onChunk: drwav_chunk_proc, pChunkUserData: *void, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_w :: (pWav: *drwav, filename: *s16, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_ex_w :: (pWav: *drwav, filename: *s16, onChunk: drwav_chunk_proc, pChunkUserData: *void, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 drwav_init_file_with_metadata :: (pWav: *drwav, filename: *u8, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_with_metadata_w :: (pWav: *drwav, filename: *wchar_t, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_with_metadata_w :: (pWav: *drwav, filename: *s16, flags: drwav_uint32, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 
 /*
 Helper for initializing a wave file for writing using stdio.
@@ -1114,9 +1114,9 @@ any given time.
 drwav_init_file_write :: (pWav: *drwav, filename: *u8, pFormat: *drwav_data_format, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 drwav_init_file_write_sequential :: (pWav: *drwav, filename: *u8, pFormat: *drwav_data_format, totalSampleCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 drwav_init_file_write_sequential_pcm_frames :: (pWav: *drwav, filename: *u8, pFormat: *drwav_data_format, totalPCMFrameCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_write_w :: (pWav: *drwav, filename: *wchar_t, pFormat: *drwav_data_format, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_write_sequential_w :: (pWav: *drwav, filename: *wchar_t, pFormat: *drwav_data_format, totalSampleCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
-drwav_init_file_write_sequential_pcm_frames_w :: (pWav: *drwav, filename: *wchar_t, pFormat: *drwav_data_format, totalPCMFrameCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_write_w :: (pWav: *drwav, filename: *s16, pFormat: *drwav_data_format, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_write_sequential_w :: (pWav: *drwav, filename: *s16, pFormat: *drwav_data_format, totalSampleCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
+drwav_init_file_write_sequential_pcm_frames_w :: (pWav: *drwav, filename: *s16, pFormat: *drwav_data_format, totalPCMFrameCount: drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> drwav_bool32 #foreign dr_libs;
 
 /*
 Helper for initializing a loader from a pre-allocated memory buffer.
@@ -1159,9 +1159,9 @@ The return value is a heap-allocated buffer containing the audio data. Use drwav
 drwav_open_file_and_read_pcm_frames_s16 :: (filename: *u8, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int16 #foreign dr_libs;
 drwav_open_file_and_read_pcm_frames_f32 :: (filename: *u8, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *float #foreign dr_libs;
 drwav_open_file_and_read_pcm_frames_s32 :: (filename: *u8, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int32 #foreign dr_libs;
-drwav_open_file_and_read_pcm_frames_s16_w :: (filename: *wchar_t, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int16 #foreign dr_libs;
-drwav_open_file_and_read_pcm_frames_f32_w :: (filename: *wchar_t, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *float #foreign dr_libs;
-drwav_open_file_and_read_pcm_frames_s32_w :: (filename: *wchar_t, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int32 #foreign dr_libs;
+drwav_open_file_and_read_pcm_frames_s16_w :: (filename: *s16, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int16 #foreign dr_libs;
+drwav_open_file_and_read_pcm_frames_f32_w :: (filename: *s16, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *float #foreign dr_libs;
+drwav_open_file_and_read_pcm_frames_s32_w :: (filename: *s16, channelsOut: *u32, sampleRateOut: *u32, totalFrameCountOut: *drwav_uint64, pAllocationCallbacks: *drwav_allocation_callbacks) -> *drwav_int32 #foreign dr_libs;
 
 /*
 Opens and decodes an entire wav file from a block of memory in a single operation.
@@ -1907,7 +1907,7 @@ drflac_open()
 drflac_close()
 */
 drflac_open_file :: (pFileName: *u8, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
-drflac_open_file_w :: (pFileName: *wchar_t, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
+drflac_open_file_w :: (pFileName: *s16, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
 
 /*
 Opens a FLAC decoder from the file at the given path and notifies the caller of the metadata chunks (album art, etc.)
@@ -1943,7 +1943,7 @@ drflac_open()
 drflac_close()
 */
 drflac_open_file_with_metadata :: (pFileName: *u8, onMeta: drflac_meta_proc, pUserData: *void, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
-drflac_open_file_with_metadata_w :: (pFileName: *wchar_t, onMeta: drflac_meta_proc, pUserData: *void, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
+drflac_open_file_with_metadata_w :: (pFileName: *s16, onMeta: drflac_meta_proc, pUserData: *void, pAllocationCallbacks: *drflac_allocation_callbacks) -> *drflac #foreign dr_libs;
 
 /*
 Opens a FLAC decoder from a pre-allocated block of memory
@@ -2283,7 +2283,7 @@ objects because the operating system may restrict the number of file handles an 
 any given time.
 */
 drmp3_init_file :: (pMP3: *drmp3, pFilePath: *u8, pAllocationCallbacks: *drmp3_allocation_callbacks) -> drmp3_bool32 #foreign dr_libs;
-drmp3_init_file_w :: (pMP3: *drmp3, pFilePath: *wchar_t, pAllocationCallbacks: *drmp3_allocation_callbacks) -> drmp3_bool32 #foreign dr_libs;
+drmp3_init_file_w :: (pMP3: *drmp3, pFilePath: *s16, pAllocationCallbacks: *drmp3_allocation_callbacks) -> drmp3_bool32 #foreign dr_libs;
 
 /*
 Uninitializes an MP3 decoder.

@@ -113,8 +113,9 @@ generate_bindings :: () -> bool {
         array_add(*libnames, "dr_libs");
         array_add(*system_include_paths, GENERATOR_DEFAULT_SYSTEM_INCLUDE_PATH);
         array_add(*include_paths, SOURCE_PATH);
-
         source_files = src_files;
+
+        array_add(*extra_clang_arguments, "-x", "c++", "-DWIN32_LEAN_AND_MEAN");
 
         log_stripped_declarations = false; // Set to true if things aren't working...
         generate_compile_time_struct_checks = true;
