@@ -1,11 +1,10 @@
-#!/usr/bin/env jai
 
-libs_to_include: Libs = Libs.DR_WAV | Libs.DR_FLAC | Libs.DR_MP3; // @consider making this a metaprogram/command line arg?
+libs_to_build :: Libs.WAV | .FLAC | .MP3; // @consider making this a metaprogram/command line arg. Can then use this as a git submodule in a project and a script/build file generate bindings for what the project requires.
 
 Libs :: enum_flags {
-    DR_WAV;
-    DR_FLAC;
-    DR_MP3;
+    WAV;
+    FLAC;
+    MP3;
 }
 
 AT_COMPILE_TIME :: true;
@@ -40,7 +39,7 @@ else {
 }
 
 generate_bindings :: () -> bool {
-    if libs_to_include == 0 {
+    if libs_to_build == 0 {
         log_error("You need to specify at least one library for binding generation!\n");
         return true;
     }
@@ -55,12 +54,11 @@ generate_bindings :: () -> bool {
     src_files: [..] string;
     extra: [..] string;
 
-    libs_info := type_info(Libs);
-    for libs_info.values {
-        if libs_to_include & cast(Libs)it {
-            name := libs_info.names[it_index];
-            array_add(*src_files, tprint("%/%.c", SOURCE_PATH, to_lower_copy(name)));
-            array_add(*extra, tprint("/D%_IMPLEMENTATION", name));
+    libs := type_info(Libs);
+    for libs.names {
+        if libs_to_build & (xx libs.values[it_index]) {
+            array_add(*src_files, tprint("%/dr_%.c", SOURCE_PATH, to_lower_copy(it)));
+            array_add(*extra, tprint("/DDR_%_IMPLEMENTATION", it));
         }
     }
 
