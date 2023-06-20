@@ -13,5 +13,4 @@ Simply import the module. If you're using a static library version then you're s
 
 ## TODO
 
-* Add support for other platforms.
-
+* Add support for other platforms (currently only supporting Windows).
